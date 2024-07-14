@@ -1,9 +1,15 @@
-import React, { createContext } from 'react'
+import React, { createContext, useState } from 'react'
 
-const GlobalContext = createContext(null);
+export const GlobalContext = createContext();
 const GlobalState = ({children}) => {
+  const [searchInput, setSearchInput] = useState('');
+  const  handleSearch = (event)=>{
+    event.preventDefault();
+  }
   return (
-    <GlobalContext.Provider>{children}</GlobalContext.Provider>
+    <GlobalContext.Provider
+    value={{searchInput, setSearchInput,handleSearch}}
+    >{children}</GlobalContext.Provider>
   )
 }
 
