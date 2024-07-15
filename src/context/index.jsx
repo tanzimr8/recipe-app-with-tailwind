@@ -19,6 +19,7 @@ const GlobalState = ({children}) => {
         setSearchInput('');
         setError(false);
         setLoading(false);
+        console.log('recipeLists: ',recipeLists)
       }
     }
     catch(e){
