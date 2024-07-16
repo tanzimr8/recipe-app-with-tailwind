@@ -7,7 +7,7 @@ const GlobalState = ({children}) => {
   const [recipeLists,setRecipeLists] = useState([]);
   const [loading,setLoading] = useState(false);
   const [error,setError] = useState(false);
-  
+  const [recipeDetailsData, setRecipeDetailsData] = useState([]);
   //HANDLE ON SUBMIT ON THE SEARCH FORM
   const handleSearch = async (event)=>{
     event.preventDefault();
@@ -32,7 +32,7 @@ const GlobalState = ({children}) => {
   return (
     //PROVIDE THE CONTEXT
     <GlobalContext.Provider
-    value={{searchInput, setSearchInput,handleSearch,recipeLists,setRecipeLists}}
+    value={{searchInput, setSearchInput,handleSearch,recipeLists,setRecipeLists,loading,recipeDetailsData,setRecipeDetailsData}}
     >{children}</GlobalContext.Provider>
   )
 }
