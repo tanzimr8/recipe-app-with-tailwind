@@ -8,6 +8,7 @@ const GlobalState = ({children}) => {
   const [loading,setLoading] = useState(false);
   const [error,setError] = useState(false);
   const [recipeDetailsData, setRecipeDetailsData] = useState([]);
+  const [favoritelists, setFavoritelists] = useState([]);
   //HANDLE ON SUBMIT ON THE SEARCH FORM
   const handleSearch = async (event)=>{
     event.preventDefault();
@@ -28,11 +29,24 @@ const GlobalState = ({children}) => {
       setSearchInput('');
     }
   }
-  
+  const handleAddToFavorite = (getRecipe)=>{
+    console.log('RECIPE FROM FAV:',getRecipe);
+    const copyOfFavList = [...favoritelists];
+    const index = copyOfFavList.findIndex((item)=>{
+      return item.id === getRecipe.id;
+    })
+    if(index === -1){
+      copyOfFavList.push(getRecipe);
+    }
+    else{
+      copyOfFavList.splice(index);
+    }
+    setFavoritelists(copyOfFavList);
+  }
   return (
     //PROVIDE THE CONTEXT
     <GlobalContext.Provider
-    value={{searchInput, setSearchInput,handleSearch,recipeLists,setRecipeLists,loading,recipeDetailsData,setRecipeDetailsData}}
+    value={{searchInput, setSearchInput,handleSearch,recipeLists,setRecipeLists,loading,recipeDetailsData,setRecipeDetailsData,handleAddToFavorite}}
     >{children}</GlobalContext.Provider>
   )
 }

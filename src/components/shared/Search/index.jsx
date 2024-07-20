@@ -14,6 +14,7 @@ const Search = () => {
                         <button type="submit" className="w-full btn btn-primary">SEARCH</button>
                     </div>
                 </form>
+                {searchInput}
             </div>
         </>
     )

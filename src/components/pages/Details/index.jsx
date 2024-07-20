@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { GlobalContext } from '../../../context'
 const Details = () => {
-  const { recipeDetailsData, setRecipeDetailsData } = useContext(GlobalContext);
+  const { recipeDetailsData, setRecipeDetailsData, handleAddToFavorite } = useContext(GlobalContext);
   const { id } = useParams();
   useEffect(() => {
     const fetchRecipeDetails = async () => {
@@ -15,6 +15,9 @@ const Details = () => {
     }
     fetchRecipeDetails();
   },[id, setRecipeDetailsData]);
+  if (!recipeDetailsData) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="mx-auto card bg-base-100 w-96 shadow-xl">
       <figure className="px-10 pt-10">
@@ -28,14 +31,17 @@ const Details = () => {
         <p>{recipeDetailsData.publisher}</p>
         <h2 className='font-bold'>Ingredients:</h2>
         <ul className="menu  w-56 ">
-          {recipeDetailsData.ingredients.map((ingredient)=>{
-          return (<li className='bg-base-200 my-2'>
-            <p>{ingredient?.description}: {ingredient?.quantity} {ingredient?.units}</p>
-          </li>)
+        {recipeDetailsData.ingredients && recipeDetailsData.ingredients.map((ingredient, index) => {
+            return (
+              <li key={index} className='bg-base-200 my-2'>
+                {ingredient.quantity ?
+                  (<p className=''><span className='capitalize font-bold'>{ingredient.description}</span>: {ingredient.quantity} {ingredient.units}</p>) : null}
+              </li>
+            )
           })}
       </ul>
         <div className="card-actions">
-          <button className="btn btn-primary">Add to favorites</button>
+          <button onClick={()=>{handleAddToFavorite(recipeDetailsData)}} className="btn btn-primary">Add to favorites</button>
         </div>
       </div>
     </div>

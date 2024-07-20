@@ -17,7 +17,7 @@ const Recipe = ({recipe}) => {
                 <p>{recipe.title}</p>
                 <div className="card-actions justify-start py-3">
                     <Link to={`/details/${recipe.id}`}><button className="btn btn-accent">Show Details</button></Link>
-                    <button className="btn btn-accent">Add to favorite</button>
+                    {/* <button className="btn btn-accent">Add to favorite</button> */}
 
                 </div>
             </div>
