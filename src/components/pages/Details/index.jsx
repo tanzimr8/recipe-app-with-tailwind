@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { GlobalContext } from '../../../context'
 const Details = () => {
-  const { recipeDetailsData, setRecipeDetailsData, handleAddToFavorite } = useContext(GlobalContext);
+  const { recipeDetailsData, setRecipeDetailsData, favoritelists, handleAddToFavorite } = useContext(GlobalContext);
   const { id } = useParams();
   useEffect(() => {
     const fetchRecipeDetails = async () => {
@@ -41,7 +41,9 @@ const Details = () => {
           })}
       </ul>
         <div className="card-actions">
-          <button onClick={()=>{handleAddToFavorite(recipeDetailsData)}} className="btn btn-primary">Add to favorites</button>
+          <button onClick={()=>{handleAddToFavorite(recipeDetailsData)}} className="btn btn-primary">
+            {favoritelists.findIndex(item => item.id === recipeDetailsData.id) === -1 ? 'Add to favorite' : 'Remove from favorites'}
+          </button>
         </div>
       </div>
     </div>
