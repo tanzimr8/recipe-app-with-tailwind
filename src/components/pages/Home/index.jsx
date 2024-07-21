@@ -11,7 +11,7 @@ const Home = () => {
       <div className="flex flex-row items-center justify-center flex-wrap	gap-8">
         {recipeLists && recipeLists.length > 0 ? (recipeLists.map((recipe)=>{
           return <Recipe key={recipe.id} recipe={recipe}/>  
-        })) : <Noresult/>}
+        })) : <Noresult text={'No recipes to show. Please search something!'}/>}
       </div>
     </>
 

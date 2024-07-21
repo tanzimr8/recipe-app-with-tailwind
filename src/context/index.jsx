@@ -42,11 +42,12 @@ const GlobalState = ({children}) => {
       copyOfFavList.splice(index);
     }
     setFavoritelists(copyOfFavList);
+    console.log('copyOfFavList:',copyOfFavList)
   }
   return (
     //PROVIDE THE CONTEXT
     <GlobalContext.Provider
-    value={{searchInput, setSearchInput,handleSearch,recipeLists,setRecipeLists,loading,recipeDetailsData,setRecipeDetailsData,handleAddToFavorite}}
+    value={{searchInput, setSearchInput,handleSearch,recipeLists,setRecipeLists,loading,recipeDetailsData,setRecipeDetailsData,handleAddToFavorite,favoritelists}}
     >{children}</GlobalContext.Provider>
   )
 }

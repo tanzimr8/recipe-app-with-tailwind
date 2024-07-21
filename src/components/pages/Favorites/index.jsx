@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { GlobalContext } from '../../../context'
+
+import Noresult from '../Home/Noresult';
+import Recipe from '../Home/Recipe';
+
 
 const Favorites = () => {
+  const { favoritelists,loading } = useContext(GlobalContext);
+  console.log('favoritelists:', favoritelists);
   return (
-    <div className='flex flex-col items-center '>
-      <ul className="menu  w-56 ">
-        <li className='bg-base-200 my-2'><a>Item 1</a></li>
-        <li className='bg-base-200 my-2'><a>Item 2</a></li>
-        <li className='bg-base-200 my-2'><a>Item 3</a></li>
-      </ul>
-    </div>
+    <>
+      <div className="flex flex-row items-center justify-center flex-wrap	gap-8">
+        {favoritelists && favoritelists.length > 0 ? (favoritelists.map((recipe)=>{
+          return <Recipe key={recipe.id} recipe={recipe}/>  
+        })) : <Noresult text={'Nothing is in Favorites'}/>}
+      </div>
+    </>
+
   )
 }
 
