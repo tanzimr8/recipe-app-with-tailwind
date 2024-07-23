@@ -27,7 +27,8 @@ const GlobalState = ({children}) => {
       }
     }
     catch(e){
-      setError(e);
+      setError(true);
+      console.log("error: ", e);
       setLoading(false);
       setSearchInput('');
     }
@@ -50,7 +51,7 @@ const GlobalState = ({children}) => {
   return (
     //PROVIDE THE CONTEXT
     <GlobalContext.Provider
-    value={{searchInput, setSearchInput,handleSearch,recipeLists,setRecipeLists,loading,recipeDetailsData,setRecipeDetailsData,handleAddToFavorite,favoritelists}}
+    value={{searchInput, setSearchInput,handleSearch,recipeLists,setRecipeLists,loading,recipeDetailsData,setRecipeDetailsData,handleAddToFavorite,favoritelists,error}}
     >{children}</GlobalContext.Provider>
   )
 }

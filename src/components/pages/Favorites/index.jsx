@@ -7,7 +7,6 @@ import Recipe from '../Home/Recipe';
 
 const Favorites = () => {
   const { favoritelists,loading } = useContext(GlobalContext);
-  console.log('favoritelists:', favoritelists);
   return (
     <>
       <div className="flex flex-row items-center justify-center flex-wrap	gap-8">
