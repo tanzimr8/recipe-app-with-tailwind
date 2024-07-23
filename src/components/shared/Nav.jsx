@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { GlobalContext } from '../../context'
 const Nav = () => {
     const { favoritelists } = useContext(GlobalContext);
@@ -35,7 +35,7 @@ const Nav = () => {
                         </li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl ">RECIPE APP</a>
+                <Link to={'/'} className="btn btn-ghost text-xl ">RECIPE APP</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 text-2xl uppercase">
